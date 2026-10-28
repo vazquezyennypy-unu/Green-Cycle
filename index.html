@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Cycle - Educación Ambiental, Test, Guía y Eco-Hábitos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#F1F8E9',
+                            100: '#E8F5E9',
+                            200: '#C8E6C9',
+                            300: '#A5D6A7',
+                            400: '#81C784',
+                            500: '#4CAF50',
+                            600: '#43A047',
+                            700: '#2E7D32',
+                            800: '#1B5E20',
+                            900: '#144317',
+                        },
+                        cream: '#FAF8F5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF8F5;
+            color: #2C3E50;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark body {
+            background-color: #0F172A;
+            color: #F8FAFC;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(46, 125, 50, 0.08);
+        }
+        .dark .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 35px -5px rgba(46, 125, 50, 0.15);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F1F8E9; }
+        ::-webkit-scrollbar-thumb { background: #81C784; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4CAF50; }
+
+        @keyframes floatItem {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .floating-item { animation: floatItem 2.5s infinite ease-in-out; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-brand-200 selection:text-brand-900 dark:bg-slate-900 dark:text-slate-100">
+
+    <!-- Header / Navbar Ampliado -->
+    <header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-brand-100 dark:border-slate-800 shadow-sm transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-100 dark:bg-brand-900 flex items-center justify-center text-brand-700 dark:text-brand-300 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black text-brand-800 dark:text-brand-300 tracking-tight block leading-none">Green Cycle</span>
+                        <span class="text-[10px] font-bold text-brand-600 dark:text-brand-400 tracking-widest uppercase">Educación & Medioambiente</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden lg:flex items-center gap-5 font-semibold text-sm text-gray-700 dark:text-slate-300">
+                    <a href="#inicio" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Inicio</a>
+                    <a href="#guia" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Guía</a>
+                    <a href="#consejos" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Consejos</a>
+                    <a href="#glosario" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Glosario</a>
+                    <a href="#nosotros" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Nosotros</a>
+                    <a href="#test" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1 flex items-center gap-1">
+                        <span>Test</span>
+                        <span class="bg-amber-100 text-amber-800 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full">Quiz</span>
+                    </a>
+                    <a href="#juego" class="bg-gradient-to-r from-emerald-500 to-brand-600 text-white px-3.5 py-1.5 rounded-xl hover:from-emerald-600 hover:to-brand-700 transition-all shadow-md text-xs font-bold flex items-center gap-1">
+                        <span>🎮 Eco-Juego</span>
+                    </a>
+                    <a href="#retos" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Retos</a>
+                    <a href="#calculadora" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Calculadora</a>
+
+                    <!-- Dark Mode Toggle Button -->
+                    <button id="theme-toggle" class="p-2.5 rounded-xl bg-brand-50 dark:bg-slate-800 text-brand-800 dark:text-amber-400 hover:bg-brand-100 transition-all cursor-pointer" title="Cambiar Tema">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu & Theme Button -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <button id="mobile-theme-toggle" class="p-2 rounded-xl bg-brand-50 dark:bg-slate-800 text-brand-800 dark:text-amber-400">
+                        <span id="mobile-theme-icon">🌙</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-xl text-gray-600 dark:text-slate-300 hover:bg-brand-50 focus:outline-none">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-brand-100 dark:border-slate-800 px-4 pt-2 pb-6 space-y-2 text-sm font-semibold">
+            <a href="#inicio" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800">Inicio</a>
+            <a href="#guia" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800">Guía de Reciclaje</a>
+            <a href="#consejos" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800">Consejos Ambientales</a>
+            <a href="#glosario" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800">Glosario Verde</a>
+            <a href="#nosotros" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800">Sobre Nosotros</a>
+            <a href="#test" class="block px-3 py-2 rounded-lg text-brand-800 bg-amber-50 font-bold">Test Diagnóstico</a>
+            <a href="#juego" class="block px-3 py-2 rounded-lg bg-brand-600 text-white font-bold text-center">🎮 Eco-Juego</a>
+            <a href="#retos" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800">Retos Diarios</a>
+            <a href="#calculadora" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800">Calculadora de Huella</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION: Inicio / Enfocado en la Educación (Sin badge 8+) -->
+        <section id="inicio" class="pt-10 pb-16 lg:pt-16 lg:pb-24 overflow-hidden relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100 dark:bg-brand-900/60 text-brand-800 dark:text-brand-300 text-xs font-extrabold uppercase tracking-widest shadow-sm">
+                            🌱 Portal Educativo de Reciclaje
+                        </span>
+
+                        <h1 class="text-3xl sm:text-5xl font-black text-brand-900 dark:text-white leading-tight tracking-tight">
+                            El futuro sostenible <br class="hidden sm:inline">
+                            empieza con <span class="text-brand-600 dark:text-brand-400 underline decoration-brand-300 decoration-4 underline-offset-8">conocimiento y acción</span>.
+                        </h1>
+
+                        <p class="text-sm sm:text-base text-gray-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Bienvenido a <strong>Green Cycle</strong>, una plataforma educativa dedicada a promover la economía circular, la clasificación correcta de residuos y el desarrollo de hábitos conscientes para proteger la biodiversidad de nuestro planeta.
+                        </p>
+
+                        <!-- Indicadores Informativos Limpios (Totalmente sin distintivo 8+) -->
+                        <div class="grid grid-cols-3 gap-3 pt-2 text-center max-w-md mx-auto lg:mx-0">
+                            <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-brand-100 dark:border-slate-700 custom-shadow">
+                                <span class="block font-black text-xl text-brand-700 dark:text-brand-400">♻️</span>
+                                <span class="text-[11px] text-gray-500 dark:text-slate-400 font-bold">Residuos & Guía</span>
+                            </div>
+                            <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-brand-100 dark:border-slate-700 custom-shadow">
+                                <span class="block font-black text-xl text-brand-700 dark:text-brand-400">🌍</span>
+                                <span class="text-[11px] text-gray-500 dark:text-slate-400 font-bold">100% Ecológico</span>
+                            </div>
+                            <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-brand-100 dark:border-slate-700 custom-shadow">
+                                <span class="block font-black text-xl text-brand-700 dark:text-brand-400">🌱</span>
+                                <span class="text-[11px] text-gray-500 dark:text-slate-400 font-bold">Hábitos Verdes</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+                            <a href="#guia" class="px-6 py-3.5 rounded-2xl bg-brand-700 hover:bg-brand-800 text-white font-extrabold shadow-lg hover:shadow-xl transition-all flex items-center gap-2 text-sm">
+                                📖 Explorar Guía de Reciclaje
+                            </a>
+                            <a href="#test" class="px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold shadow-lg hover:shadow-xl transition-all flex items-center gap-2 text-sm">
+                                ✍️ Probar Cuestionario
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Nueva Ilustración del Planeta Tierra Verde y Naturaleza -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md">
+                            <div class="absolute -top-6 -left-6 w-72 h-72 bg-brand-200/50 dark:bg-brand-900/30 rounded-full blur-3xl -z-10"></div>
+                            
+                            <svg class="w-full h-auto drop-shadow-2xl rounded-3xl" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Fondo suave -->
+                                <rect width="500" height="500" rx="36" fill="#F1F8E9" class="dark:fill-slate-800" fill-opacity="0.95"/>
+                                
+                                <!-- Halo de energía verde -->
+                                <circle cx="250" cy="250" r="170" fill="#C8E6C9" class="dark:fill-brand-950" fill-opacity="0.6"/>
+                                <circle cx="250" cy="250" r="145" fill="#81C784" class="dark:fill-brand-900"/>
+
+                                <!-- Planeta Tierra (Continentes y Océano verde) -->
+                                <circle cx="250" cy="250" r="120" fill="#2E7D32"/>
+                                <!-- Océano / Masas de agua vivas -->
+                                <path d="M160 210C180 180 220 170 250 190C280 210 320 180 340 220C360 260 310 320 270 340C210 360 140 300 160 210Z" fill="#4CAF50"/>
+                                <path d="M190 280C210 260 240 270 250 290C260 310 280 320 270 340C240 360 190 330 190 280Z" fill="#66BB6A"/>
+                                <path d="M280 160C300 140 330 150 340 170C350 190 330 210 300 200C280 190 270 170 280 160Z" fill="#81C784"/>
+
+                                <!-- Flechas de Ciclo de Reciclaje Alrededor del Planeta -->
+                                <g transform="rotate(25 250 250)" stroke="#FFD54F" stroke-width="8" stroke-linecap="round" fill="none">
+                                    <path d="M 130 250 A 120 120 0 0 1 250 130" />
+                                    <path d="M 370 250 A 120 120 0 0 1 250 370" />
+                                </g>
+                                
+                                <!-- Hojas y Brotes Verdes -->
+                                <g>
+                                    <!-- Hoja Arriba -->
+                                    <path d="M250 90C220 60 200 70 200 70C200 70 210 100 250 100C290 100 300 70 300 70C300 70 280 60 250 90Z" fill="#2E7D32"/>
+                                    <path d="M250 100V70" stroke="#81C784" stroke-width="3"/>
+                                    
+                                    <!-- Sol brillante -->
+                                    <circle cx="100" cy="100" r="28" fill="#FFC107"/>
+                                    <path d="M100 60V50M100 150V140M60 100H50M150 100H140M72 72L65 65M128 128L135 135M72 128L65 135M128 72L135 65" stroke="#FFC107" stroke-width="4" stroke-linecap="round"/>
+
+                                    <!-- Aerogenerador Eólico -->
+                                    <path d="M390 380L385 280H395L390 380Z" fill="#78909C"/>
+                                    <circle cx="390" cy="280" r="6" fill="#37474F"/>
+                                    <path d="M390 280L360 250M390 280L420 260M390 280L390 320" stroke="#B0BEC5" stroke-width="4" stroke-linecap="round"/>
+                                </g>
+
+                                <!-- Pequeños brotes botánicos flotantes -->
+                                <circle cx="120" cy="380" r="16" fill="#A5D6A7"/>
+                                <path d="M120 380C110 365 120 355 120 355C120 355 130 365 120 380Z" fill="#1B5E20"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- INFORMACIONAL 1: Guía de Reciclaje -->
+        <section id="guia" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-brand-600 dark:text-brand-400 font-bold tracking-wider uppercase text-xs sm:text-sm">Manual de Separación</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brand-900 dark:text-white mt-1">Guía Didáctica de Reciclaje</h2>
+                <p class="text-gray-600 dark:text-slate-300 mt-2 text-sm sm:text-base">
+                    Conoce la asignación por contenedor para optimizar el proceso de tratamiento de basura en tu comunidad.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 custom-shadow card-hover border border-gray-100 dark:border-slate-700">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mb-4">🟦</div>
+                    <span class="inline-block px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-xs font-bold mb-2">Contenedor Azul</span>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Papel y Cartón</h3>
+                    <p class="text-gray-600 dark:text-slate-300 text-xs mb-3">Cajas, periódicos, revistas y folletos limpios y secos.</p>
+                    <p class="text-xs text-red-500 font-medium">❌ No servilletas usadas ni cartón sucio con aceite.</p>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 custom-shadow card-hover border border-gray-100 dark:border-slate-700">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-xl mb-4">🟨</div>
+                    <span class="inline-block px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold mb-2">Contenedor Amarillo</span>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Plásticos y Latas</h3>
+                    <p class="text-gray-600 dark:text-slate-300 text-xs mb-3">Botellas PET, briks de leche, latas de soda y bolsas limpias.</p>
+                    <p class="text-xs text-red-500 font-medium">❌ No juguetes de plástico duro ni mangueras.</p>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 custom-shadow card-hover border border-gray-100 dark:border-slate-700">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl mb-4">🟩</div>
+                    <span class="inline-block px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold mb-2">Contenedor Verde</span>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Vidrio</h3>
+                    <p class="text-gray-600 dark:text-slate-300 text-xs mb-3">Botellas de vidrio, frascos de mermelada y tarros.</p>
+                    <p class="text-xs text-red-500 font-medium">❌ No espejos, cerámica, platos ni bombillas.</p>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 custom-shadow card-hover border border-gray-100 dark:border-slate-700">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-900/10 text-amber-800 flex items-center justify-center font-bold text-xl mb-4">🟫</div>
+                    <span class="inline-block px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-200 text-xs font-bold mb-2">Contenedor Marrón</span>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Materia Orgánica</h3>
+                    <p class="text-gray-600 dark:text-slate-300 text-xs mb-3">Cáscaras de fruta, verduras, posos de café y restos vegetales.</p>
+                    <p class="text-xs text-red-500 font-medium">❌ No pañales, colillas ni polvo de barrer.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFORMACIONAL 2: Consejos Ambientales -->
+        <section id="consejos" class="py-16 bg-white dark:bg-slate-800/40 border-y border-brand-100 dark:border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="text-brand-600 dark:text-brand-400 font-bold uppercase text-xs sm:text-sm">Hábitos Sostenibles</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-brand-900 dark:text-white mt-1">Consejos Prácticos Ambientales</h2>
+                    <p class="text-gray-600 dark:text-slate-300 mt-2 text-sm sm:text-base">
+                        Incorporate pequeñas rutinas responsables que reducen significativamente tu consumo de recursos.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 bg-brand-50/50 dark:bg-slate-800 rounded-3xl border border-brand-100 dark:border-slate-700">
+                        <div class="text-3xl mb-3">💧</div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Ahorro de Agua y Luz</h3>
+                        <p class="text-xs text-gray-600 dark:text-slate-300 leading-relaxed">
+                            Cierra los grifos mientras te enjabonas las manos o cepillas los dientes. Desconecta los cargadores sin uso para prevenir consumos parásitos.
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-brand-50/50 dark:bg-slate-800 rounded-3xl border border-brand-100 dark:border-slate-700">
+                        <div class="text-3xl mb-3">🛍️</div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Cero Plásticos Desechables</h3>
+                        <p class="text-xs text-gray-600 dark:text-slate-300 leading-relaxed">
+                            Sustituye botellas de un solo uso por recipientes térmicos reutilizables y lleva bolsas de tela reutilizables cuando hagas compras.
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-brand-50/50 dark:bg-slate-800 rounded-3xl border border-brand-100 dark:border-slate-700">
+                        <div class="text-3xl mb-3">🍱</div>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Reducción de Desperdicios</h3>
+                        <p class="text-xs text-gray-600 dark:text-slate-300 leading-relaxed">
+                            Planifica tu lista de alimentos con antelación y aprovecha sobrantes de cocina para evitar el desecho innecesario de productos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFORMACIONAL 3: Diccionario Ecológico (Glosario) -->
+        <section id="glosario" class="py-16 bg-brand-50/60 dark:bg-slate-800/40 border-b border-brand-100 dark:border-slate-800">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-brand-600 dark:text-brand-400 font-bold uppercase text-xs">Conceptos Clave</span>
+                    <h2 class="text-3xl font-black text-brand-900 dark:text-white mt-1">Diccionario Ecológico</h2>
+                    <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-300 mt-1">Consulta la definición de los términos fundamentales de sostenibilidad.</p>
+                </div>
+
+                <!-- Filtros por Categoría (Sin Buscador) -->
+                <div class="flex flex-wrap justify-center gap-2 mb-8">
+                    <button class="glossary-cat-btn active px-4 py-2 rounded-xl text-xs font-bold bg-brand-700 text-white shadow-sm transition-all" data-cat="all">
+                        Todos
+                    </button>
+                    <button class="glossary-cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 hover:bg-brand-100 transition-all" data-cat="concepto">
+                        Conceptos Clave
+                    </button>
+                    <button class="glossary-cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 hover:bg-brand-100 transition-all" data-cat="materiales">
+                        Materiales
+                    </button>
+                    <button class="glossary-cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 hover:bg-brand-100 transition-all" data-cat="impacto">
+                        Impacto Ambiental
+                    </button>
+                </div>
+
+                <div id="glossary-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="glossary-card bg-white dark:bg-slate-800 p-6 rounded-3xl border border-brand-100 dark:border-slate-700 custom-shadow card-hover" data-cat="concepto">
+                        <span class="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-bold text-[10px] uppercase tracking-wider">Concepto Clave</span>
+                        <h4 class="text-lg font-extrabold text-gray-900 dark:text-white mt-3">Economía Circular</h4>
+                        <p class="text-xs text-gray-600 dark:text-slate-300 mt-2 leading-relaxed">
+                            Sistema que minimiza la entrada de insumos y la producción de desechos reutilizando y recirculando materiales de forma infinita.
+                        </p>
+                    </div>
+
+                    <div class="glossary-card bg-white dark:bg-slate-800 p-6 rounded-3xl border border-brand-100 dark:border-slate-700 custom-shadow card-hover" data-cat="materiales">
+                        <span class="px-3 py-1 rounded-full bg-sky-50 dark:bg-sky-950 text-sky-800 dark:text-sky-300 font-bold text-[10px] uppercase tracking-wider">Materiales</span>
+                        <h4 class="text-lg font-extrabold text-gray-900 dark:text-white mt-3">Microplásticos</h4>
+                        <p class="text-xs text-gray-600 dark:text-slate-300 mt-2 leading-relaxed">
+                            Diminutos fragmentos sintéticos de menos de 5 mm de diámetro que amenazan la vida acuática y las fuentes hídricas.
+                        </p>
+                    </div>
+
+                    <div class="glossary-card bg-white dark:bg-slate-800 p-6 rounded-3xl border border-brand-100 dark:border-slate-700 custom-shadow card-hover" data-cat="impacto">
+                        <span class="px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-bold text-[10px] uppercase tracking-wider">Impacto</span>
+                        <h4 class="text-lg font-extrabold text-gray-900 dark:text-white mt-3">Huella de Carbono</h4>
+                        <p class="text-xs text-gray-600 dark:text-slate-300 mt-2 leading-relaxed">
+                            Métrica que representa el volumen total de gases de efecto invernadero liberados a la atmósfera debido a nuestras actividades cotidianas.
+                        </p>
+                    </div>
+
+                    <div class="glossary-card bg-white dark:bg-slate-800 p-6 rounded-3xl border border-brand-100 dark:border-slate-700 custom-shadow card-hover" data-cat="concepto">
+                        <span class="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-200 font-bold text-[10px] uppercase tracking-wider">Concepto Clave</span>
+                        <h4 class="text-lg font-extrabold text-gray-900 dark:text-white mt-3">Compostaje</h4>
+                        <p class="text-xs text-gray-600 dark:text-slate-300 mt-2 leading-relaxed">
+                            Transformación biológica controlada de restos de origen vegetal para transformarlos en abono orgánico fértil y nutritivo.
+                        </p>
+                    </div>
+
+                    <div class="glossary-card bg-white dark:bg-slate-800 p-6 rounded-3xl border border-brand-100 dark:border-slate-700 custom-shadow card-hover" data-cat="materiales">
+                        <span class="px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950 text-teal-800 dark:text-teal-300 font-bold text-[10px] uppercase tracking-wider">Materiales</span>
+                        <h4 class="text-lg font-extrabold text-gray-900 dark:text-white mt-3">Biodegradable</h4>
+                        <p class="text-xs text-gray-600 dark:text-slate-300 mt-2 leading-relaxed">
+                            Capacidad de un compuesto para descomponerse naturalmente mediante microorganismos en elementos orgánicos en corto periodo.
+                        </p>
+                    </div>
+
+                    <div class="glossary-card bg-white dark:bg-slate-800 p-6 rounded-3xl border border-brand-100 dark:border-slate-700 custom-shadow card-hover" data-cat="impacto">
+                        <span class="px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950 text-purple-800 dark:text-purple-300 font-bold text-[10px] uppercase tracking-wider">Impacto</span>
+                        <h4 class="text-lg font-extrabold text-gray-900 dark:text-white mt-3">Punto Limpio</h4>
+                        <p class="text-xs text-gray-600 dark:text-slate-300 mt-2 leading-relaxed">
+                            Instalación urbana donde depositar de forma segura residuos especiales como electrodomésticos, aceite o baterías usadas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFORMACIONAL 4: Sobre Nosotros / Propósito -->
+        <section id="nosotros" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 sm:p-12 custom-shadow border border-brand-100 dark:border-slate-700 text-center space-y-4">
+                <span class="text-brand-600 dark:text-brand-400 font-bold uppercase text-xs">Propósito Educativo</span>
+                <h2 class="text-3xl font-black text-brand-900 dark:text-white">Sobre Green Cycle</h2>
+                <p class="text-sm sm:text-base text-gray-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                    Nuestra misión es hacer accesible la educación ambiental a comunidades, estudiantes y familias mediante herramientas dinámicas e instructivas. Creemos firmemente que comprender la importancia de cada residuo es el primer paso indispensable para preservar el medio ambiente.
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================== SECCIONES INTERACTIVAS (ABAJO) ==================== -->
+
+        <!-- INTERACTIVO 1: Test de Diagnóstico -->
+        <section id="test" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="bg-amber-100 text-amber-800 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Módulo Interactivo</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brand-900 dark:text-white mt-2">Test Diagnóstico de Reciclaje</h2>
+                <p class="text-gray-600 dark:text-slate-300 text-sm mt-2">Pon a prueba tu conocimiento. Las opciones cambian de posición aleatoriamente en cada intento.</p>
+            </div>
+
+            <div class="bg-white dark:bg-slate-800 rounded-3xl custom-shadow border border-brand-100 dark:border-slate-700 p-6 sm:p-10 relative">
+                
+                <div id="test-active-view" class="space-y-6">
+                    <div class="flex justify-between items-center text-xs sm:text-sm font-bold text-brand-800 dark:text-brand-300">
+                        <span id="test-step-text">Pregunta 1 de 5</span>
+                        <span id="test-score-text" class="text-brand-600 dark:text-brand-400">Puntos: 0</span>
+                    </div>
+
+                    <div class="w-full bg-gray-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+                        <div id="test-progress-bar" class="bg-brand-500 h-full w-0 transition-all duration-300"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center pt-2">
+                        <div class="md:col-span-8 space-y-4">
+                            <h3 id="test-question-title" class="text-lg sm:text-xl font-extrabold text-gray-900 dark:text-white leading-snug">
+                                Cargando pregunta...
+                            </h3>
+                            <div id="test-options-container" class="space-y-3">
+                                <!-- Botones de respuestas dinámicas -->
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-4 flex justify-center bg-brand-50/50 dark:bg-slate-900 p-6 rounded-2xl border border-brand-100 dark:border-slate-700">
+                            <div id="test-svg-container" class="text-center">
+                                <!-- Ilustración SVG dinámica -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="test-feedback-box" class="hidden p-4 rounded-2xl text-xs sm:text-sm transition-all">
+                        <strong id="test-feedback-title" class="block font-black text-sm mb-1"></strong>
+                        <p id="test-feedback-desc" class="leading-relaxed"></p>
+                    </div>
+
+                    <div class="flex justify-end pt-4 border-t border-gray-100 dark:border-slate-700">
+                        <button id="test-next-btn" disabled class="px-6 py-3 rounded-xl bg-brand-700 text-white font-bold text-sm hover:bg-brand-800 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                            Siguiente Pregunta ➔
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Resultado del Test -->
+                <div id="test-result-view" class="hidden text-center py-8 space-y-6">
+                    <div class="text-6xl">🎓</div>
+                    <h3 class="text-2xl sm:text-3xl font-black text-brand-900 dark:text-white">¡Cuestionario Completado!</h3>
+                    
+                    <div class="inline-block bg-brand-50 dark:bg-slate-900 border border-brand-200 dark:border-slate-700 px-6 py-4 rounded-2xl">
+                        <span class="block text-xs uppercase font-bold text-gray-500 dark:text-slate-400">Puntuación Lograda</span>
+                        <span id="test-final-score" class="text-4xl font-black text-brand-700 dark:text-brand-400">0 / 5</span>
+                    </div>
+
+                    <div class="max-w-md mx-auto space-y-2">
+                        <span id="test-badge-level" class="inline-block px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-xs uppercase">Guardián Verde</span>
+                        <p id="test-result-message" class="text-sm text-gray-600 dark:text-slate-300 leading-relaxed"></p>
+                    </div>
+
+                    <div>
+                        <button id="test-restart-btn" class="px-8 py-3.5 rounded-2xl bg-brand-700 hover:bg-brand-800 text-white font-black text-sm shadow-lg transition-all">
+                            🔄 Intentar Nuevamente
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INTERACTIVO 2: Eco-Juego Arcade -->
+        <section id="juego" class="py-16 bg-gradient-to-b from-brand-900 to-brand-950 text-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-8">
+                    <span class="bg-brand-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Juego de Agilidad</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">🎮 Misión Clasificación Express</h2>
+                    <p class="text-brand-200 text-xs sm:text-sm mt-2">
+                        Haz clic en el contenedor correcto antes de que el contador llegue a cero.
+                    </p>
+                </div>
+
+                <div class="bg-brand-800/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-brand-700 shadow-2xl relative overflow-hidden">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 text-center">
+                        <div class="bg-brand-900/80 p-3 rounded-2xl border border-brand-700">
+                            <span class="text-[10px] uppercase font-bold text-brand-300 block">Puntos</span>
+                            <span id="game-score" class="text-2xl font-black text-emerald-400">0</span>
+                        </div>
+                        <div class="bg-brand-900/80 p-3 rounded-2xl border border-brand-700">
+                            <span class="text-[10px] uppercase font-bold text-brand-300 block">Combo</span>
+                            <span id="game-combo" class="text-2xl font-black text-amber-400">x1</span>
+                        </div>
+                        <div class="bg-brand-900/80 p-3 rounded-2xl border border-brand-700">
+                            <span class="text-[10px] uppercase font-bold text-brand-300 block">Tiempo</span>
+                            <span id="game-timer" class="text-2xl font-black text-white">30s</span>
+                        </div>
+                        <div class="bg-brand-900/80 p-3 rounded-2xl border border-brand-700">
+                            <span class="text-[10px] uppercase font-bold text-brand-300 block">Vidas</span>
+                            <span id="game-lives" class="text-2xl font-black text-red-400">❤️❤️❤️</span>
+                        </div>
+                    </div>
+
+                    <div id="game-area" class="min-h-[240px] bg-brand-900/90 rounded-2xl border-2 border-dashed border-brand-600 flex flex-col items-center justify-center p-6 relative">
+                        <div id="game-start-overlay" class="text-center space-y-4">
+                            <div class="text-6xl floating-item">📦</div>
+                            <h3 class="text-2xl font-black">Demuestra tus reflejos ecológicos</h3>
+                            <button id="start-game-btn" class="px-8 py-3.5 rounded-2xl bg-emerald-400 hover:bg-emerald-500 text-brand-950 font-black text-base shadow-lg transition-all cursor-pointer">
+                                🚀 ¡Empezar Partida!
+                            </button>
+                        </div>
+
+                        <div id="game-active-stage" class="hidden text-center space-y-4 w-full">
+                            <div id="item-graphic" class="text-7xl floating-item transition-all duration-200 select-none">🍾</div>
+                            <div>
+                                <h4 id="item-name" class="text-2xl font-black text-white">Botella de Vidrio</h4>
+                            </div>
+                        </div>
+
+                        <div id="game-over-overlay" class="hidden text-center space-y-4">
+                            <div class="text-6xl">🏆</div>
+                            <h3 class="text-3xl font-black text-emerald-400">¡Partida Concluida!</h3>
+                            <p class="text-brand-100 text-sm">Puntuación Registrada: <strong id="final-game-score" class="text-2xl text-white font-black">0</strong></p>
+                            <button id="restart-game-btn" class="px-8 py-3.5 rounded-2xl bg-emerald-500 text-brand-950 font-black hover:bg-emerald-400 transition-all cursor-pointer">
+                                🔄 Jugar De Nuevo
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="bins-container" class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+                        <button class="bin-btn p-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-black text-sm flex flex-col items-center gap-1 active:scale-95 transition-all cursor-pointer" data-type="papel">
+                            <span class="text-2xl">🟦</span>
+                            <span>AZUL</span>
+                        </button>
+                        <button class="bin-btn p-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-white font-black text-sm flex flex-col items-center gap-1 active:scale-95 transition-all cursor-pointer" data-type="plastico">
+                            <span class="text-2xl">🟨</span>
+                            <span>AMARILLO</span>
+                        </button>
+                        <button class="bin-btn p-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm flex flex-col items-center gap-1 active:scale-95 transition-all cursor-pointer" data-type="vidrio">
+                            <span class="text-2xl">🟩</span>
+                            <span>VERDE</span>
+                        </button>
+                        <button class="bin-btn p-4 rounded-2xl bg-amber-900 hover:bg-amber-800 text-white font-black text-sm flex flex-col items-center gap-1 active:scale-95 transition-all cursor-pointer" data-type="organico">
+                            <span class="text-2xl">🟫</span>
+                            <span>MARRÓN</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVO 3: Retos Diarios (Ubicados justo después del juego) -->
+        <section id="retos" class="py-14 bg-white dark:bg-slate-800/60 border-y border-brand-100 dark:border-slate-800 transition-colors">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="bg-brand-100 dark:bg-brand-900 text-brand-800 dark:text-brand-300 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Lista de Acción</span>
+                    <h2 class="text-3xl font-black text-brand-900 dark:text-white mt-2">Desafíos Verdes de la Semana</h2>
+                    <p class="text-xs sm:text-sm text-gray-600 dark:text-slate-300 mt-1">Registra las acciones sostenibles que completaste hoy.</p>
+                </div>
+
+                <div class="bg-brand-50/50 dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-brand-100 dark:border-slate-700">
+                    <div class="mb-6 space-y-2">
+                        <div class="flex justify-between text-xs font-bold text-brand-800 dark:text-brand-300">
+                            <span>Progreso de Retos</span>
+                            <span id="challenge-score">0 / 5 Cumplidos</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-slate-700 h-3 rounded-full overflow-hidden">
+                            <div id="challenge-bar" class="bg-brand-500 h-full w-0 transition-all duration-300"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3" id="challenges-list">
+                        <label class="flex items-center gap-3 p-3.5 bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 cursor-pointer hover:bg-brand-50/40 transition-all">
+                            <input type="checkbox" class="challenge-check w-5 h-5 text-brand-600 rounded focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs sm:text-sm font-medium text-gray-800 dark:text-slate-200">💧 Cerré la llave del agua mientras me cepillaba o fregaba platos.</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 cursor-pointer hover:bg-brand-50/40 transition-all">
+                            <input type="checkbox" class="challenge-check w-5 h-5 text-brand-600 rounded focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs sm:text-sm font-medium text-gray-800 dark:text-slate-200">🛍️ Utilicé bolsas de tela en lugar de bolsas plásticas desechables.</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 cursor-pointer hover:bg-brand-50/40 transition-all">
+                            <input type="checkbox" class="challenge-check w-5 h-5 text-brand-600 rounded focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs sm:text-sm font-medium text-gray-800 dark:text-slate-200">🍌 Separé los desechos de origen orgánico para basura verde/compost.</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 cursor-pointer hover:bg-brand-50/40 transition-all">
+                            <input type="checkbox" class="challenge-check w-5 h-5 text-brand-600 rounded focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs sm:text-sm font-medium text-gray-800 dark:text-slate-200">🔌 Desconecté cargadores e instrumentos electrónicos que no estaba ocupando.</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 cursor-pointer hover:bg-brand-50/40 transition-all">
+                            <input type="checkbox" class="challenge-check w-5 h-5 text-brand-600 rounded focus:ring-brand-500 cursor-pointer">
+                            <span class="text-xs sm:text-sm font-medium text-gray-800 dark:text-slate-200">🍾 Deposité frascos, plásticos o cartón en el contenedor correspondiente.</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVO 4: Calculadora de Huella -->
+        <section id="calculadora" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-brand-600 dark:text-brand-400 font-bold uppercase text-xs">Simulador de Impacto</span>
+                <h2 class="text-3xl font-black text-brand-900 dark:text-white mt-1">Calculadora de Huella Semanal</h2>
+            </div>
+
+            <div class="bg-white dark:bg-slate-800 rounded-3xl custom-shadow border border-brand-100 dark:border-slate-700 p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4 text-sm">
+                    <div>
+                        <label class="font-bold text-gray-800 dark:text-slate-200 block mb-1">Botellas desechables compradas por semana:</label>
+                        <input type="number" id="calc-plastic" value="5" min="0" class="w-full p-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900 outline-none">
+                    </div>
+                    <div>
+                        <label class="font-bold text-gray-800 dark:text-slate-200 block mb-1">Minutos de ducha diarios promedio:</label>
+                        <input type="number" id="calc-shower" value="10" min="1" class="w-full p-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900 outline-none">
+                    </div>
+                    <button id="calc-btn" class="w-full py-3.5 rounded-xl bg-brand-700 text-white font-bold hover:bg-brand-800 transition-all cursor-pointer">
+                        Calcular Consumo
+                    </button>
+                </div>
+
+                <div class="bg-brand-50/60 dark:bg-slate-900 p-6 rounded-2xl border border-brand-100 dark:border-slate-700 space-y-4">
+                    <h4 class="font-black text-brand-900 dark:text-brand-300 text-base">Resultado aproximado:</h4>
+                    <div class="space-y-2 text-xs sm:text-sm">
+                        <p class="text-gray-700 dark:text-slate-300">💧 Consumo hídrico estimado: <strong id="calc-result-water" class="text-brand-700 dark:text-brand-400 font-bold">700 Litros/sem</strong></p>
+                        <p class="text-gray-700 dark:text-slate-300">🛍️ Residuo sintético generado: <strong id="calc-result-plastic" class="text-brand-700 dark:text-brand-400 font-bold">260g/sem</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-white py-10 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
+            <div class="flex justify-center items-center gap-2">
+                <span class="text-2xl">🌱</span>
+                <span class="font-black text-xl tracking-tight">Green Cycle</span>
+            </div>
+            <p class="text-xs text-brand-200 max-w-md mx-auto">
+                Educando y promoviendo el cuidado del planeta a través de la reducción, reutilización y reciclaje responsable.
+            </p>
+            <p class="text-[11px] text-brand-400 pt-2 border-t border-brand-800">
+                &copy; Green Cycle - Plataforma Educativa Sostenible
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Integrado -->
+    <script>
+        // --- 1. Control del Modo Oscuro (Dark Mode) ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            const icon = isDark ? '☀️' : '🌙';
+            themeIcon.textContent = icon;
+            mobileThemeIcon.textContent = icon;
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        themeToggleBtn.addEventListener('click', toggleDarkMode);
+        mobileThemeToggleBtn.addEventListener('click', toggleDarkMode);
+
+        // Cargar preferencia guardada
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.textContent = '☀️';
+            mobileThemeIcon.textContent = '☀️';
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeIcon.textContent = '🌙';
+            mobileThemeIcon.textContent = '🌙';
+        }
+
+        // --- 2. Menú Móvil Toggle ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- 3. Retos Diarios (Desafíos Verdes) ---
+        const challengeChecks = document.querySelectorAll('.challenge-check');
+        const challengeScore = document.getElementById('challenge-score');
+        const challengeBar = document.getElementById('challenge-bar');
+
+        function updateChallenges() {
+            let checkedCount = 0;
+            challengeChecks.forEach(chk => {
+                if (chk.checked) checkedCount++;
+            });
+            challengeScore.textContent = `${checkedCount} / ${challengeChecks.length} Cumplidos`;
+            challengeBar.style.width = `${(checkedCount / challengeChecks.length) * 100}%`;
+        }
+
+        challengeChecks.forEach(chk => chk.addEventListener('change', updateChallenges));
+
+        // --- 4. Glosario Categorías ---
+        const glossaryCards = document.querySelectorAll('.glossary-card');
+        const glossaryCatBtns = document.querySelectorAll('.glossary-cat-btn');
+
+        glossaryCatBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                glossaryCatBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-brand-700', 'text-white', 'shadow-sm');
+                    b.classList.add('bg-white', 'dark:bg-slate-800', 'text-gray-600', 'dark:text-slate-300');
+                });
+                btn.classList.add('active', 'bg-brand-700', 'text-white', 'shadow-sm');
+                btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-gray-600', 'dark:text-slate-300');
+
+                const selectedCat = btn.getAttribute('data-cat');
+                glossaryCards.forEach(card => {
+                    const cardCat = card.getAttribute('data-cat');
+                    if (selectedCat === 'all' || cardCat === selectedCat) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // --- 5. Test Interactivo con Opciones Aleatorizadas ---
+        const rawTestQuestions = [
+            {
+                q: "¿En qué contenedor debe desecharse una caja de cartón de pizza muy grasienta?",
+                correct: "Contenedor Marrón (Orgánico)",
+                incorrects: ["Contenedor Azul (Papel)", "Contenedor Amarillo", "Punto Limpio"],
+                svg: `<svg class="w-20 h-20 text-amber-800 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4l6.5 13h-13L12 6z"/></svg>`,
+                explanation: "El cartón impregnado con grasa no puede procesarse junto al papel limpio. Debe desecharse con materia orgánica."
+            },
+            {
+                q: "¿Qué acción es correcta con una botella de plástico PET antes de tirarla al contenedor amarillo?",
+                correct: "Aplastarla para quitar el aire y reducir su volumen",
+                incorrects: ["Llenarla de agua", "Quemarla previamente", "Cortarla con tijera en 20 trozos"],
+                svg: `<svg class="w-20 h-20 text-amber-500 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M6 2h12v4H6V2zm2 6h8v14H8V8z"/></svg>`,
+                explanation: "Aplastarla ahorra espacio en los contenedores comunitarios y camiones de transporte."
+            },
+            {
+                q: "¿A dónde deben llevarse los espejos rotos o vidrios de ventanas?",
+                correct: "Punto Limpio o Ecoparque Municipal",
+                incorrects: ["Contenedor Verde de Vidrio común", "Contenedor Amarillo", "Bolsa de basura común"],
+                svg: `<svg class="w-20 h-20 text-emerald-600 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>`,
+                explanation: "El cristal de ventanas contiene componentes químicos diferentes al vidrio de frascos y botellas."
+            },
+            {
+                q: "¿Por qué las pilas usadas NUNCA deben tirarse al contenedor común?",
+                correct: "Contienen metales pesados tóxicos que contaminan agua y suelo",
+                incorrects: ["Porque ocupan demasiado espacio", "Porque pueden derretir los camiones de basura", "Porque se pueden volver a cargar solas"],
+                svg: `<svg class="w-20 h-20 text-red-500 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M16.59 9H15V4c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v5H7.41c-.89 0-1.34 1.08-.71 1.71l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.63-.63.18-1.71-.7-1.71z"/></svg>`,
+                explanation: "Una sola pila puede contaminar miles de litros de agua si se sulfata libremente en un vertedero."
+            },
+            {
+                q: "¿Qué beneficio principal ofrece el proceso de compostaje doméstico?",
+                correct: "Transforma restos orgánicos en abono natural rico en nutrientes",
+                incorrects: ["Fabrica plásticos biodegradables", "Evita el consumo de energía eléctrica", "Crea envases de vidrio nuevos"],
+                svg: `<svg class="w-20 h-20 text-brand-600 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L4 9v12h16V9l-8-6zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5S9.51 8.5 12 8.5s4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z"/></svg>`,
+                explanation: "El compostaje nutre los suelos de manera natural reduciendo hasta un 40% la basura doméstica."
+            }
+        ];
+
+        let testIndex = 0;
+        let testScore = 0;
+        let testSelected = null;
+        let currentShuffledOptions = [];
+
+        function shuffleArray(arr) {
+            const array = [...arr];
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        const testStepText = document.getElementById('test-step-text');
+        const testScoreText = document.getElementById('test-score-text');
+        const testProgressBar = document.getElementById('test-progress-bar');
+        const testQuestionTitle = document.getElementById('test-question-title');
+        const testSvgContainer = document.getElementById('test-svg-container');
+        const testOptionsContainer = document.getElementById('test-options-container');
+        const testFeedbackBox = document.getElementById('test-feedback-box');
+        const testFeedbackTitle = document.getElementById('test-feedback-title');
+        const testFeedbackDesc = document.getElementById('test-feedback-desc');
+        const testNextBtn = document.getElementById('test-next-btn');
+
+        function loadTestQuestion() {
+            const current = rawTestQuestions[testIndex];
+            testSelected = null;
+            
+            const allOptions = [current.correct, ...current.incorrects];
+            currentShuffledOptions = shuffleArray(allOptions);
+
+            testStepText.textContent = `Pregunta ${testIndex + 1} de ${rawTestQuestions.length}`;
+            testScoreText.textContent = `Puntos: ${testScore}`;
+            testProgressBar.style.width = `${((testIndex + 1) / rawTestQuestions.length) * 100}%`;
+            testQuestionTitle.textContent = `${testIndex + 1}. ${current.q}`;
+            testSvgContainer.innerHTML = current.svg;
+            testFeedbackBox.classList.add('hidden');
+            testNextBtn.disabled = true;
+
+            testOptionsContainer.innerHTML = '';
+            currentShuffledOptions.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full text-left p-3.5 rounded-xl border-2 border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-900 hover:bg-amber-50 dark:hover:bg-slate-700 font-medium text-xs sm:text-sm text-gray-800 dark:text-slate-200 transition-all cursor-pointer';
+                btn.textContent = optText;
+                btn.onclick = () => selectTestOption(idx, optText, current.correct);
+                testOptionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectTestOption(selectedIndex, selectedText, correctText) {
+            if (testSelected !== null) return;
+            testSelected = selectedIndex;
+            const current = rawTestQuestions[testIndex];
+            const btns = testOptionsContainer.children;
+
+            for (let b of btns) b.disabled = true;
+
+            if (selectedText === correctText) {
+                testScore++;
+                btns[selectedIndex].className = 'w-full text-left p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-100 dark:bg-emerald-950 font-bold text-emerald-900 dark:text-emerald-200 text-xs sm:text-sm';
+                testFeedbackBox.className = 'p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 text-xs sm:text-sm';
+                testFeedbackTitle.textContent = '✅ ¡Respuesta Correcta!';
+            } else {
+                btns[selectedIndex].className = 'w-full text-left p-3.5 rounded-xl border-2 border-red-400 bg-red-100 dark:bg-red-950 font-bold text-red-900 dark:text-red-200 text-xs sm:text-sm';
+                
+                currentShuffledOptions.forEach((opt, i) => {
+                    if (opt === correctText) {
+                        btns[i].className = 'w-full text-left p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-900 font-bold text-emerald-900 dark:text-emerald-100 text-xs sm:text-sm';
+                    }
+                });
+
+                testFeedbackBox.className = 'p-4 rounded-2xl bg-amber-50 dark:bg-amber-950 border border-amber-200 dark:border-amber-800 text-amber-900 dark:text-amber-200 text-xs sm:text-sm';
+                testFeedbackTitle.textContent = '💡 Explicación Educativa:';
+            }
+
+            testFeedbackDesc.textContent = current.explanation;
+            testFeedbackBox.classList.remove('hidden');
+            testNextBtn.disabled = false;
+        }
+
+        testNextBtn.onclick = () => {
+            if (testIndex < rawTestQuestions.length - 1) {
+                testIndex++;
+                loadTestQuestion();
+            } else {
+                showTestResults();
+            }
+        };
+
+        function showTestResults() {
+            document.getElementById('test-active-view').classList.add('hidden');
+            document.getElementById('test-result-view').classList.remove('hidden');
+            document.getElementById('test-final-score').textContent = `${testScore} / ${rawTestQuestions.length}`;
+
+            const msg = document.getElementById('test-result-message');
+            const level = document.getElementById('test-badge-level');
+
+            if (testScore >= 4) {
+                level.textContent = "🏅 Guardián Verde";
+                msg.textContent = "¡Demostraste un dominio excelente sobre la clasificación de residuos y el cuidado ambiental!";
+            } else {
+                level.textContent = "🌱 Aprendiz Verde";
+                msg.textContent = "¡Buen trabajo! Revisa el Diccionario y la Guía para consolidar tus aprendizajes.";
+            }
+        }
+
+        document.getElementById('test-restart-btn').onclick = () => {
+            testIndex = 0;
+            testScore = 0;
+            document.getElementById('test-result-view').classList.add('hidden');
+            document.getElementById('test-active-view').classList.remove('hidden');
+            loadTestQuestion();
+        };
+
+        loadTestQuestion();
+
+        // --- 6. Arcade Eco-Juego ---
+        const gameItems = [
+            { name: "Botella de Vidrio", icon: "🍾", type: "vidrio" },
+            { name: "Caja de Cartón", icon: "📦", type: "papel" },
+            { name: "Lata de Refresco", icon: "🥤", type: "plastico" },
+            { name: "Cáscara de Plátano", icon: "🍌", type: "organico" },
+            { name: "Periódico Viejo", icon: "📰", type: "papel" },
+            { name: "Envase de Yogurt", icon: "🧃", type: "plastico" }
+        ];
+
+        let gScore = 0, gCombo = 1, gLives = 3, gTimer = 30, gInterval = null, currentItem = null;
+
+        document.getElementById('start-game-btn').onclick = startGame;
+        document.getElementById('restart-game-btn').onclick = startGame;
+
+        function startGame() {
+            gScore = 0; gCombo = 1; gLives = 3; gTimer = 30;
+            document.getElementById('game-score').textContent = gScore;
+            document.getElementById('game-combo').textContent = 'x1';
+            document.getElementById('game-timer').textContent = '30s';
+            document.getElementById('game-lives').textContent = "❤️❤️❤️";
+
+            document.getElementById('game-start-overlay').classList.add('hidden');
+            document.getElementById('game-over-overlay').classList.add('hidden');
+            document.getElementById('game-active-stage').classList.remove('hidden');
+
+            nextGameItem();
+            clearInterval(gInterval);
+            gInterval = setInterval(() => {
+                gTimer--;
+                document.getElementById('game-timer').textContent = `${gTimer}s`;
+                if (gTimer <= 0 || gLives <= 0) endGame();
+            }, 1000);
+        }
+
+        function nextGameItem() {
+            currentItem = gameItems[Math.floor(Math.random() * gameItems.length)];
+            document.getElementById('item-graphic').textContent = currentItem.icon;
+            document.getElementById('item-name').textContent = currentItem.name;
+        }
+
+        document.querySelectorAll('.bin-btn').forEach(btn => {
+            btn.onclick = () => {
+                if (!currentItem || gTimer <= 0 || gLives <= 0) return;
+                if (btn.getAttribute('data-type') === currentItem.type) {
+                    gScore += 100 * gCombo;
+                    gCombo = Math.min(gCombo + 1, 5);
+                } else {
+                    gLives--;
+                    gCombo = 1;
+                }
+                document.getElementById('game-score').textContent = gScore;
+                document.getElementById('game-combo').textContent = `x${gCombo}`;
+                document.getElementById('game-lives').textContent = "❤️".repeat(Math.max(0, gLives));
+                
+                if (gLives <= 0) endGame();
+                else nextGameItem();
+            };
+        });
+
+        function endGame() {
+            clearInterval(gInterval);
+            document.getElementById('game-active-stage').classList.add('hidden');
+            document.getElementById('game-over-overlay').classList.remove('hidden');
+            document.getElementById('final-game-score').textContent = gScore;
+        }
+
+        // --- 7. Calculadora ---
+        document.getElementById('calc-btn').onclick = () => {
+            const plastic = parseInt(document.getElementById('calc-plastic').value) || 0;
+            const shower = parseInt(document.getElementById('calc-shower').value) || 0;
+            document.getElementById('calc-result-water').textContent = `${shower * 10 * 7} Litros/sem`;
+            document.getElementById('calc-result-plastic').textContent = `${plastic * 52}g/sem`;
+        };
+    </script>
+</body>
+</html>
